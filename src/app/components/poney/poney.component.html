@@ -1,0 +1,6 @@
+<div class="container" [style.left]="poney.distance | percent">
+  <mat-card (click)="handleClick()">
+    {{ poney.name }}
+  </mat-card>
+  <img [src]="poney.img">
+</div>

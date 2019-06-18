@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  width: 100%;
+  user-select: none;
+
+  .container {
+    display: inline-block;
+    width: 10%;
+    position: relative;
+    left: 0;
+    transition: left 1s linear;
+
+    mat-card {
+      text-align: center;
+      font-size: 1.5vw;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
