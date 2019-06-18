@@ -10,6 +10,10 @@ import { PercentPipe } from './pipes/percent.pipe';
 import { RaceComponent } from './components/race/race.component';
 import { FilterPoneyPipe } from './pipes/filter-poney.pipe';
 import { UpperCasePipe } from '@angular/common';
+import { RaceListComponent } from './components/race-list/race-list.component';
+import { RaceCreateComponent } from './components/race-create/race-create.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -18,12 +22,15 @@ import { UpperCasePipe } from '@angular/common';
     RainbowDirective,
     PercentPipe,
     RaceComponent,
-    FilterPoneyPipe
+    FilterPoneyPipe,
+    RaceListComponent,
+    RaceCreateComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     UpperCasePipe

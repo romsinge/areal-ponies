@@ -1,5 +1,3 @@
-import { RaceService } from './services/race.service';
-import { Race } from './models/race';
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -10,12 +8,4 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'Areal'
-
-  races: Race[] = []
-
-  ngOnInit() {
-    this.races = this.raceService.races
-  }
-
-  constructor(private raceService: RaceService) {}
 }
