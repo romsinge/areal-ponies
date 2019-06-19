@@ -7,24 +7,9 @@ import { Injectable } from '@angular/core';
 })
 export class RaceService {
 
-  private _ponies: Poney[] = [
-    new Poney("0", "Romain", "http://ponyracer.ninja-squad.com/assets/images/pony-green-running.gif"),
-    new Poney("1", "Jean-Marc", "http://ponyracer.ninja-squad.com/assets/images/pony-blue-running.gif"),
-    new Poney("2", "Julien", "http://ponyracer.ninja-squad.com/assets/images/pony-purple-running.gif")
-  ]
+  private _ponies: Poney[] = []
 
-  private _races: Race[] = [
-    {
-      "id": "0",
-      "name": "Thädinge",
-      "poneyIds": ["0", "1"]
-    },
-    {
-      "id": "1",
-      "name": "Béning",
-      "poneyIds": ["1", "2"]
-    }
-  ]
+  private _races: Race[] = []
 
   get ponies(): Poney[] {
     return this._ponies

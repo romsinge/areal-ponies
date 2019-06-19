@@ -1,0 +1,31 @@
+{
+  "ponies": [
+    {
+      "id": "0",
+      "name": "Romain",
+      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-green-running.gif"
+    },
+    {
+      "id": "1",
+      "name": "Jean-Marc",
+      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-blue-running.gif"
+    },
+    {
+      "id": "2",
+      "name": "Julien",
+      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-purple-running.gif"
+    }
+  ],
+  "races": [
+    {
+      "id": "0",
+      "name": "Thädinge",
+      "poneyIds": ["0", "1"]
+    },
+    {
+      "id": "1",
+      "name": "Béning",
+      "poneyIds": ["1", "2"]
+    }
+  ]
+}
