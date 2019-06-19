@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPoneyPipe implements PipeTransform {
 
   transform(ponies: Poney[] = [], poneyIds: string[]): Poney[] {
-    return ponies.filter(poney => poneyIds.includes(poney.id))
+    return ponies ? ponies.filter(poney => poneyIds.includes(poney.id)) : []
   }
 
 }

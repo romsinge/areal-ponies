@@ -1,6 +1,7 @@
 import { RaceService } from './../../services/race.service';
 import { Race } from './../../models/race';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'arl-race-list',
@@ -9,10 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RaceListComponent implements OnInit {
 
-  races: Race[] = []
+  races$: Observable<Race[]>
 
   ngOnInit() {
-    this.races = this.raceService.races
+    this.races$ = this.raceService.races
   }
 
   constructor(private raceService: RaceService) {}

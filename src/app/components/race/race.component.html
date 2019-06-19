@@ -3,7 +3,7 @@
     arlRainbow="cyan"
     [poney]="poney"
     (win)="handleWin($event)"
-    *ngFor="let poney of ponies | filterPoney:race.poneyIds; let e = even"
+    *ngFor="let poney of ponies$ | async | filterPoney:race.poneyIds; let e = even"
     [isColored]="e"
     #poneyChildren
   ></arl-poney>

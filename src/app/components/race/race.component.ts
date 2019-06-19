@@ -5,8 +5,8 @@ import { Race } from '../../models/race';
 import { UpperCasePipe } from '@angular/common';
 import { RaceService } from 'src/app/services/race.service';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators'
-import { Observable, Subscription } from 'rxjs';
+import { flatMap, map, tap } from 'rxjs/operators'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'arl-race',
@@ -17,8 +17,7 @@ export class RaceComponent implements OnInit {
 
   race$: Observable<Race>
 
-  ponies: Poney[] = []
-  sub: Subscription
+  ponies$: Observable<Poney[]>
 
   @ViewChildren('poneyChildren') poneyChildren: QueryList<PoneyComponent>
 
@@ -34,9 +33,11 @@ export class RaceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ponies = this.raceService.ponies
+    this.ponies$ = this.raceService.ponies
 
-    this.race$ = this.route.paramMap.pipe(map(params => this.raceService.getRaceById(params.get('id'))))
+    this.race$ = this.route.paramMap.pipe(
+      flatMap(params => this.raceService.getRaceById(params.get('id')))
+    )
   }
 
   stopPonies() {
