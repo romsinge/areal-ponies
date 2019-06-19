@@ -1,5 +1,5 @@
-<arl-race
-  *ngFor="let race of races"
-  [race]="race"
->
-</arl-race>
+<mat-action-list>
+  <mat-list-item [routerLink]="['/race', race.id]" *ngFor="let race of races">
+    {{ race.name }}
+  </mat-list-item>
+</mat-action-list>

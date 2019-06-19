@@ -1,8 +1,10 @@
-<arl-poney
-  arlRainbow="cyan"
-  [poney]="poney"
-  (win)="handleWin($event)"
-  *ngFor="let poney of ponies | filterPoney:race.poneyIds; let e = even"
-  [isColored]="e"
-  #poneyChildren
-></arl-poney>
+<ng-container *ngIf="(race$ | async) as race">
+  <arl-poney
+    arlRainbow="cyan"
+    [poney]="poney"
+    (win)="handleWin($event)"
+    *ngFor="let poney of ponies | filterPoney:race.poneyIds; let e = even"
+    [isColored]="e"
+    #poneyChildren
+  ></arl-poney>
+</ng-container>

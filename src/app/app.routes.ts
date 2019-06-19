@@ -19,7 +19,7 @@ export const routes: Routes = [
     component: RaceCreateComponent
   },
   {
-    path: 'race',
+    path: 'race/:id',
     component: RaceComponent
   },
   {

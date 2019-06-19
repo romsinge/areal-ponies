@@ -23,6 +23,8 @@ export class PoneyComponent {
   }
 
   run(): void {
+    this.poney.distance = 0
+
     this.intervalId = setInterval(() => {
       this.poney.distance += Math.floor(Math.random() * 10) + 1
 

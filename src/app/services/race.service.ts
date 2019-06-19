@@ -34,5 +34,9 @@ export class RaceService {
     return this._races
   }
 
+  getRaceById(id: string): Race {
+    return this.races.find(race => race.id === id)
+  }
+
   constructor() { }
 }

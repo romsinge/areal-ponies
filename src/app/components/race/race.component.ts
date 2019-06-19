@@ -1,9 +1,12 @@
 import { Poney } from './../../models/poney';
-import { Component, OnInit, ViewChildren, QueryList, Input } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { PoneyComponent } from '../poney/poney.component';
 import { Race } from '../../models/race';
 import { UpperCasePipe } from '@angular/common';
 import { RaceService } from 'src/app/services/race.service';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators'
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'arl-race',
@@ -12,26 +15,37 @@ import { RaceService } from 'src/app/services/race.service';
 })
 export class RaceComponent implements OnInit {
 
-  @Input() race: Race
+  race$: Observable<Race>
 
   ponies: Poney[] = []
+  sub: Subscription
 
   @ViewChildren('poneyChildren') poneyChildren: QueryList<PoneyComponent>
 
   handleWin(poney: Poney): void {
     console.log('WINNER : ', this.uppercasePipe.transform(poney.name))
+    this.stopPonies()
+  }
+
+  constructor(
+    private uppercasePipe: UpperCasePipe,
+    private raceService: RaceService,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit() {
+    this.ponies = this.raceService.ponies
+
+    this.race$ = this.route.paramMap.pipe(map(params => this.raceService.getRaceById(params.get('id'))))
+  }
+
+  stopPonies() {
     this.poneyChildren.forEach(poney => {
       poney.stopRunning()
     })
   }
 
-  constructor(
-    private uppercasePipe: UpperCasePipe,
-    private raceService: RaceService  
-  ) { }
-
-  ngOnInit() {
-    this.ponies = this.raceService.ponies
+  ngOnDestroy(): void {
+    this.stopPonies()
   }
-
 }
