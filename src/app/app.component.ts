@@ -1,4 +1,7 @@
+import { State } from './reducers/index';
+import { Store } from '@ngrx/store';
 import { Component, ViewEncapsulation } from '@angular/core';
+import { InitRaces } from './actions/races.actions';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +11,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'Areal'
+
+  ngOnInit() {
+    this.store.dispatch(new InitRaces())
+  }
+
+  constructor(private store: Store<State>) {}
 }

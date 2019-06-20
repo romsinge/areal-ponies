@@ -17,6 +17,13 @@ import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
+import { RacesEffects } from './effects/races.effects';
 
 @NgModule({
   declarations: [
@@ -37,7 +44,10 @@ import { PoneyCreateComponent } from './components/poney-create/poney-create.com
     RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([AppEffects, RacesEffects])
   ],
   providers: [
     UpperCasePipe

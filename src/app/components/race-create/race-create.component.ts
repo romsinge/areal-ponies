@@ -1,3 +1,6 @@
+import { AddRace } from './../../actions/races.actions';
+import { State } from './../../reducers/index';
+import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { RaceService } from 'src/app/services/race.service';
 import { Observable } from 'rxjs';
@@ -17,14 +20,18 @@ export class RaceCreateComponent implements OnInit {
     poneyIds: []
   }
 
-  constructor(private raceService: RaceService) { }
+  constructor(
+    private raceService: RaceService,
+    private store: Store<State>
+  ) { }
 
   ngOnInit() {
     this.ponies$ = this.raceService.ponies
   }
 
   handleSubmit() {
-    this.raceService.saveRace(this.race)
+    // this.raceService.saveRace(this.race)
+    this.store.dispatch(new AddRace(this.race))
   }
 
 }

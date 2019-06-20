@@ -1,4 +1,4 @@
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Race } from 'src/app/models/race';
 import { Poney } from './../models/poney';
@@ -30,10 +30,10 @@ export class RaceService {
     )
   }
 
-  saveRace(race: Race): void {
-    this.http.post<Race>(`${environment.apiUrl}/races`, race).subscribe(race => {
+  saveRace(race: Race): Observable<Race> {
+    return this.http.post<Race>(`${environment.apiUrl}/races`, race).pipe(tap(race => {
       this.router.navigate(['/race', race.id])
-    })
+    }))
   }
 
   savePoney(poney: Poney): void {
