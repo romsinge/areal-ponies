@@ -42,5 +42,13 @@ export class RaceService {
     })
   }
 
+  isPoneyNameAvailable(name: string): Observable<boolean> {
+    return this.http.get<Poney[]>(`${environment.apiUrl}/ponies`, {
+      params: {
+        name
+      }
+    }).pipe(map(ponies => !ponies.length))
+  }
+
   constructor(private http: HttpClient, private router: Router) { }
 }
