@@ -5,10 +5,16 @@
 
   <mat-form-field>
     <input matInput placeholder="Name" formControlName="name">
+    <mat-error *ngFor="let error of poneyForm.controls.name.errors | keyvalue">
+      {{ errorMessages[error.key] }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input matInput placeholder="Image" formControlName="img">
+    <mat-error *ngFor="let error of poneyForm.controls.img.errors | keyvalue">
+      {{ errorMessages[error.key] }}
+    </mat-error>
   </mat-form-field>
 
   <button [disabled]="poneyForm.invalid" mat-raised-button type="submit">Create</button>

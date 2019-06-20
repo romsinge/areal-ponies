@@ -10,14 +10,20 @@ import { RaceService } from 'src/app/services/race.service';
 export class PoneyCreateComponent implements OnInit {
 
   poneyForm: FormGroup
+  errorMessages: Object = {
+    required: 'Ce champ est requis',
+    minlength: '2 caractères minimum'
+  }
 
   constructor(private raceService: RaceService) { }
 
   ngOnInit() {
     this.poneyForm = new FormGroup({
-      name: new FormControl('', [ Validators.required ]),
-      img: new FormControl('', [ Validators.required ])
+      name: new FormControl('', [ Validators.required, Validators.minLength(2) ]),
+      img: new FormControl('', [ Validators.required, Validators.minLength(2) ])
     })
+
+    console.log(this.poneyForm)
   }
 
   handleSubmit() {
