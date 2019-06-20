@@ -14,18 +14,48 @@
       "id": "2",
       "name": "Julien",
       "img": "http://ponyracer.ninja-squad.com/assets/images/pony-purple-running.gif"
+    },
+    {
+      "name": "Pascal",
+      "img": "https://thumbs.gfycat.com/HandsomeSpottedCero-size_restricted.gif",
+      "id": "cDE0ucM"
     }
   ],
   "races": [
     {
       "id": "0",
       "name": "Thädinge",
-      "poneyIds": ["0", "1"]
+      "poneyIds": [
+        "0",
+        "1"
+      ]
     },
     {
       "id": "1",
       "name": "Béning",
-      "poneyIds": ["1", "2"]
+      "poneyIds": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "name": "Freyming-Merlebach",
+      "poneyIds": [
+        "0",
+        "1",
+        "2"
+      ],
+      "id": "7_DXTUQ"
+    },
+    {
+      "name": "Paris",
+      "poneyIds": [
+        "0",
+        "1",
+        "2",
+        "cDE0ucM"
+      ],
+      "id": "J8gTA37"
     }
   ]
 }

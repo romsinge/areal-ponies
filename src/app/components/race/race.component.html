@@ -1,4 +1,7 @@
 <ng-container *ngIf="(race$ | async) as race">
+
+  <h2>{{ race.name }}</h2>
+
   <arl-poney
     arlRainbow="cyan"
     [poney]="poney"

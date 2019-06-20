@@ -1,5 +1,5 @@
 export interface Race {
-  id: string
+  id?: string
   name: string
   poneyIds: string[]
 }

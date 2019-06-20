@@ -1,0 +1,16 @@
+
+<form (submit)="handleSubmit()" [formGroup]="poneyForm">
+
+  <h2>Create Poney</h2>
+
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Image" formControlName="img">
+  </mat-form-field>
+
+  <button [disabled]="poneyForm.invalid" mat-raised-button type="submit">Create</button>
+
+</form>

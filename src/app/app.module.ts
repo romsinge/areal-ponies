@@ -15,6 +15,8 @@ import { RaceCreateComponent } from './components/race-create/race-create.compon
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,17 @@ import { HttpClientModule } from '@angular/common/http';
     RaceComponent,
     FilterPoneyPipe,
     RaceListComponent,
-    RaceCreateComponent
+    RaceCreateComponent,
+    PoneyCreateComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     UpperCasePipe

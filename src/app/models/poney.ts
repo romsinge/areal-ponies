@@ -1,8 +1,8 @@
 export class Poney {
   constructor(
-    public id: string,
     public name: string,
     public img: string,
+    public id?: string,
     public distance: number = 0
   ) {}
 }

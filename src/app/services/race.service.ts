@@ -5,6 +5,7 @@ import { Poney } from './../models/poney';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,17 @@ export class RaceService {
     )
   }
 
-  constructor(private http: HttpClient) { }
+  saveRace(race: Race): void {
+    this.http.post<Race>(`${environment.apiUrl}/races`, race).subscribe(race => {
+      this.router.navigate(['/race', race.id])
+    })
+  }
+
+  savePoney(poney: Poney): void {
+    this.http.post<Poney>(`${environment.apiUrl}/ponies`, poney).subscribe(poney => {
+      this.router.navigateByUrl('/race-create')
+    })
+  }
+
+  constructor(private http: HttpClient, private router: Router) { }
 }
