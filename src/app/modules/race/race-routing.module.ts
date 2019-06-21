@@ -6,7 +6,7 @@ import { RaceComponent } from 'src/app/components/race/race.component';
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: 'watch/:id',
     component: RaceComponent
   },
   {

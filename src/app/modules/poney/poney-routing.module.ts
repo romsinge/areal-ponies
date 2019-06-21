@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'create',
+    component: PoneyCreateComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
