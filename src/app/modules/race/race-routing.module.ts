@@ -1,3 +1,4 @@
+import { FormGuard } from './../../guards/form.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RaceListComponent } from './components/race-list/race-list.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    component: RaceCreateComponent
+    component: RaceCreateComponent,
+    canDeactivate: [ FormGuard ]
   },
   {
     path: '**',

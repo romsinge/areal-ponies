@@ -1,3 +1,4 @@
+import { AdminGuard } from './../../guards/admin.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
@@ -5,7 +6,8 @@ import { PoneyCreateComponent } from './components/poney-create/poney-create.com
 const routes: Routes = [
   {
     path: 'create',
-    component: PoneyCreateComponent
+    component: PoneyCreateComponent,
+    canActivate: [ AdminGuard ]
   }
 ];
 

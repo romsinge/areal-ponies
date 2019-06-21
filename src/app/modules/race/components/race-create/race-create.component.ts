@@ -1,7 +1,8 @@
+import { FormGroup } from '@angular/forms';
 import { AddRace } from '../../../../actions/races.actions';
 import { State } from '../../../../reducers/index';
 import { Store, select } from '@ngrx/store';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RaceService } from 'src/app/services/race.service';
 import { Observable } from 'rxjs';
 import { Poney } from 'src/app/models/poney';
@@ -21,6 +22,7 @@ export class RaceCreateComponent implements OnInit {
     name: '',
     poneyIds: []
   }
+  @ViewChild('raceForm', { "static": false }) raceForm: FormGroup
 
   constructor(
     private raceService: RaceService,
