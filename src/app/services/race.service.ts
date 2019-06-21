@@ -36,10 +36,10 @@ export class RaceService {
     }))
   }
 
-  savePoney(poney: Poney): void {
-    this.http.post<Poney>(`${environment.apiUrl}/ponies`, poney).subscribe(poney => {
+  savePoney(poney: Poney): Observable<Poney> {
+    return this.http.post<Poney>(`${environment.apiUrl}/ponies`, poney).pipe(tap(poney => {
       this.router.navigateByUrl('/race-create')
-    })
+    }))
   }
 
   isPoneyNameAvailable(name: string): Observable<boolean> {

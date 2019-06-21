@@ -2,6 +2,7 @@ import { State } from './reducers/index';
 import { Store } from '@ngrx/store';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { InitRaces } from './actions/races.actions';
+import { InitPonies } from './actions/ponies.actions';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.store.dispatch(new InitRaces())
+    this.store.dispatch(new InitPonies())
   }
 
   constructor(private store: Store<State>) {}

@@ -24,6 +24,11 @@
       "name": "Arnaud",
       "img": "https://i.redd.it/ewjlhkbrzvg21.gif",
       "id": "uNEd7Gz"
+    },
+    {
+      "name": "Emmanuel",
+      "img": "http://nonauxstereotypes.n.o.pic.centerblog.net/967459be.gif",
+      "id": "zZhfJGa"
     }
   ],
   "races": [
@@ -83,10 +88,16 @@
       "id": "CnE1nPx"
     },
     {
-      "id": "hvu2fvd"
-    },
-    {
-      "id": "3-nlby3"
+      "name": "Areal",
+      "poneyIds": [
+        "0",
+        "1",
+        "2",
+        "cDE0ucM",
+        "uNEd7Gz",
+        "zZhfJGa"
+      ],
+      "id": "bD51ti5"
     }
   ]
 }

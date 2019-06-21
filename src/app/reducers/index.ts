@@ -3,8 +3,6 @@ import { Poney } from 'src/app/models/poney';
 import {
   ActionReducer,
   ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
@@ -17,8 +15,8 @@ export interface State {
 }
 
 export const reducers: ActionReducerMap<State> = {
-  ponies: poniesReducer,
-  races: racesReducer
+  ponies: poniesReducer as ActionReducer<Poney[]>,
+  races: racesReducer as ActionReducer<Race[]>
 };
 
 

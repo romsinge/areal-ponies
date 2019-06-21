@@ -1,3 +1,4 @@
+import { PoniesEffects } from './effects/ponies.effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -47,7 +48,7 @@ import { RacesEffects } from './effects/races.effects';
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AppEffects, RacesEffects])
+    EffectsModule.forRoot([AppEffects, RacesEffects, PoniesEffects])
   ],
   providers: [
     UpperCasePipe

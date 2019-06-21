@@ -1,8 +1,12 @@
+import { isPoneyNameAvailable } from './../../reducers/selectors';
+import { AddPoney } from './../../actions/ponies.actions';
+import { State } from './../../reducers/index';
+import { Store, select } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
 import { RaceService } from 'src/app/services/race.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { map, first } from 'rxjs/operators'
 
 type ValidatorReturnValue = undefined | ValidationErrors
 
@@ -21,7 +25,7 @@ export class PoneyCreateComponent implements OnInit {
     isponeynameavailable: 'Ce nom n\'est pas disponible'
   }
 
-  constructor(private raceService: RaceService) { }
+  constructor(private raceService: RaceService, private store: Store<State>) { }
 
   ngOnInit() {
     this.poneyForm = new FormGroup({
@@ -39,15 +43,18 @@ export class PoneyCreateComponent implements OnInit {
   }
 
   isPoneyNameAvailable(control: FormControl): Observable<ValidatorReturnValue> {
-    return this.raceService.isPoneyNameAvailable(control.value).pipe(map(isAvailable => {
-      return isAvailable ? undefined : {
-        isponeynameavailable: true
-      }
-    }))
+    return this.store.pipe(select(isPoneyNameAvailable, control.value)).pipe(
+      first(),
+      map(isAvailable => {
+        return isAvailable ? undefined : {
+          isponeynameavailable: true
+        }
+      })
+    )
   }
 
   handleSubmit() {
-    this.raceService.savePoney(this.poneyForm.value)
+    this.store.dispatch(new AddPoney(this.poneyForm.value))
   }
 
 }
