@@ -1,8 +1,7 @@
-import { State } from './../../reducers/index';
+import { RaceEntityService } from './../../services/race-entity-service';
 import { Race } from './../../models/race';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'arl-race-list',
@@ -14,9 +13,9 @@ export class RaceListComponent implements OnInit {
   races$: Observable<Race[]>
 
   ngOnInit() {
-    this.races$ = this.store.pipe(select('races'))
+    this.races$ = this.raceEntityService.entities$
   }
 
-  constructor(private store: Store<State>) {}
+  constructor(private raceEntityService: RaceEntityService) {}
 
 }

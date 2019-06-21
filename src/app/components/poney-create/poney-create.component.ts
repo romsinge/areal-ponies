@@ -1,3 +1,4 @@
+import { PoneyEntityService } from './../../services/poney-entity.service';
 import { isPoneyNameAvailable } from './../../reducers/selectors';
 import { AddPoney } from './../../actions/ponies.actions';
 import { State } from './../../reducers/index';
@@ -25,7 +26,7 @@ export class PoneyCreateComponent implements OnInit {
     isponeynameavailable: 'Ce nom n\'est pas disponible'
   }
 
-  constructor(private raceService: RaceService, private store: Store<State>) { }
+  constructor(private raceService: RaceService, private store: Store<State>, private poneyEntityService: PoneyEntityService) { }
 
   ngOnInit() {
     this.poneyForm = new FormGroup({
@@ -54,7 +55,7 @@ export class PoneyCreateComponent implements OnInit {
   }
 
   handleSubmit() {
-    this.store.dispatch(new AddPoney(this.poneyForm.value))
+    this.poneyEntityService.add(this.poneyForm.value)
   }
 
 }

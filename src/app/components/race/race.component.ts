@@ -1,3 +1,5 @@
+import { PoneyEntityService } from './../../services/poney-entity.service';
+import { RaceEntityService } from './../../services/race-entity-service';
 import { State } from './../../reducers/index';
 import { Store, select } from '@ngrx/store';
 import { Poney } from './../../models/poney';
@@ -32,14 +34,16 @@ export class RaceComponent implements OnInit {
     private uppercasePipe: UpperCasePipe,
     private raceService: RaceService,
     private route: ActivatedRoute,
-    private store: Store<State>
+    private store: Store<State>,
+    private raceEntityService: RaceEntityService,
+    private poneyEntityService: PoneyEntityService
   ) { }
 
   ngOnInit() {
-    this.ponies$ = this.store.pipe(select('ponies'))
+    this.ponies$ = this.poneyEntityService.entities$
 
     this.race$ = this.route.paramMap.pipe(
-      flatMap(params => this.raceService.getRaceById(params.get('id')))
+      flatMap(params => this.raceEntityService.getByKey(params.get('id')))
     )
   }
 

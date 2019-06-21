@@ -2,8 +2,16 @@ import { State } from './index';
 import { createSelector } from '@ngrx/store'
 
 export const isPoneyNameAvailable = createSelector(
-  (state: State) => state.ponies,
+  (state: any) => state.entityCache.Ponies.entities,
   (ponies, name) => {
-    return !ponies.find(poney => poney.name === name)
+    let isAvailable = true
+
+    for (let key in ponies) {
+      if (ponies[key].name === name) {
+        isAvailable = false
+      }
+    }
+
+    return isAvailable
   }
 )

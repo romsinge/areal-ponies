@@ -1,9 +1,11 @@
+import { Router } from '@angular/router';
 import { AddRace, AddRaceSuccess, InitRaces, InitRacesSuccess } from './../actions/races.actions';
 import { RaceService } from 'src/app/services/race.service';
-import { map, flatMap } from 'rxjs/operators';
+import { map, flatMap, tap } from 'rxjs/operators';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { RacesActionTypes } from '../actions/races.actions';
+import { EntityAction, EntityOp } from '@ngrx/data';
 
 @Injectable()
 export class RacesEffects {
@@ -28,5 +30,13 @@ export class RacesEffects {
     })
   )
 
-  constructor(private actions$: Actions, private raceService: RaceService) {}
+  @Effect({ dispatch: false })
+  addRaceSuccess$ = this.actions$.pipe(
+    ofType<EntityAction>(`[Races] ${EntityOp.SAVE_ADD_ONE_SUCCESS}`),
+    tap((action) => {
+      this.router.navigate(['/race', action.payload.data.id])
+    })
+  )
+
+  constructor(private actions$: Actions, private raceService: RaceService, private router: Router) {}
 }

@@ -25,6 +25,8 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { RacesEffects } from './effects/races.effects';
+import { EntityDataModule } from '@ngrx/data';
+import { entityMetadataConfig } from './app.entity-metadata';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { RacesEffects } from './effects/races.effects';
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AppEffects, RacesEffects, PoniesEffects])
+    EffectsModule.forRoot([AppEffects, RacesEffects, PoniesEffects]),
+    EntityDataModule.forRoot(entityMetadataConfig)
   ],
   providers: [
     UpperCasePipe

@@ -1,8 +1,10 @@
+import { EntityOp, EntityAction } from '@ngrx/data';
 import { AddPoney, PoniesActionTypes, AddPoneySuccess, InitPonies, InitPoniesSuccess } from './../actions/ponies.actions';
 import { RaceService } from 'src/app/services/race.service';
-import { map, flatMap } from 'rxjs/operators';
+import { map, flatMap, tap } from 'rxjs/operators';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PoniesEffects {
@@ -16,16 +18,14 @@ export class PoniesEffects {
       }))
     })
   )
-  
-  @Effect()
-  initPonies$ = this.actions$.pipe(
-    ofType<InitPonies>(PoniesActionTypes.Init),
-    flatMap(() => {
-      return this.raceService.ponies.pipe(map(ponies => {
-        return new InitPoniesSuccess(ponies)
-      }))
+
+  @Effect({ dispatch: false })
+  addPoneySuccess$ = this.actions$.pipe(
+    ofType<EntityAction>(`[Ponies] ${EntityOp.SAVE_ADD_ONE_SUCCESS}`),
+    tap((action) => {
+      this.router.navigateByUrl('/race-create')
     })
   )
 
-  constructor(private actions$: Actions, private raceService: RaceService) {}
+  constructor(private actions$: Actions, private raceService: RaceService, private router: Router) {}
 }
