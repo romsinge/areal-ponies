@@ -1,5 +1,5 @@
-import { RaceEntityService } from './../../services/race-entity-service';
-import { Race } from './../../models/race';
+import { RaceEntityService } from '../../../../services/race-entity-service';
+import { Race } from '../../../../models/race';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 

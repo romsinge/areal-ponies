@@ -1,5 +1,5 @@
-import { AddRace } from './../../actions/races.actions';
-import { State } from './../../reducers/index';
+import { AddRace } from '../../../../actions/races.actions';
+import { State } from '../../../../reducers/index';
 import { Store, select } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { RaceService } from 'src/app/services/race.service';

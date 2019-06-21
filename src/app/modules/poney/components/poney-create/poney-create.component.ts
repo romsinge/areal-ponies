@@ -1,7 +1,7 @@
-import { PoneyEntityService } from './../../services/poney-entity.service';
-import { isPoneyNameAvailable } from './../../reducers/selectors';
-import { AddPoney } from './../../actions/ponies.actions';
-import { State } from './../../reducers/index';
+import { PoneyEntityService } from '../../../../services/poney-entity.service';
+import { isPoneyNameAvailable } from '../../../../reducers/selectors';
+import { AddPoney } from '../../../../actions/ponies.actions';
+import { State } from '../../../../reducers/index';
 import { Store, select } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
