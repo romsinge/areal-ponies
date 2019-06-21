@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { UpperCasePipe } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
@@ -28,7 +28,8 @@ import { entityMetadataConfig } from './app.entity-metadata';
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(routes, {
-      useHash: true
+      useHash: true,
+      "preloadingStrategy": PreloadAllModules
     }),
     HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),

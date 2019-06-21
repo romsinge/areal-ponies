@@ -9,8 +9,7 @@ import { PercentPipe } from 'src/app/pipes/percent.pipe';
 
 @NgModule({
   declarations: [
-    PoneyCreateComponent,
-    PercentPipe
+    PoneyCreateComponent
   ],
   imports: [
     CommonModule,

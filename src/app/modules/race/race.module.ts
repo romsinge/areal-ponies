@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 
 import { RaceRoutingModule } from './race-routing.module';
 import { MaterialModule } from '../material/material.module';
+import { PercentPipe } from 'src/app/pipes/percent.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MaterialModule } from '../material/material.module';
     RaceComponent,
     FilterPoneyPipe,
     PoneyComponent,
-    RainbowDirective
+    RainbowDirective,
+    PercentPipe
   ],
   imports: [
     CommonModule,
